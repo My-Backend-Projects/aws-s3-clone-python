@@ -34,10 +34,10 @@ cd BucketManager
 
 This version uses an in-memory list to manage buckets. Follow these steps to use it:
 
-1. Open `bucket_manager_no_sqlite.py` and review the code.
+1. Open `bucket.py` and review the code.
 2. Run the script:
     ```bash
-    python bucket_manager_no_sqlite.py
+    python bucket.py
     ```
 
 ```python
@@ -107,10 +107,10 @@ print(bucket_manager.bucket)
 This version uses SQLite3 for persistent storage. Follow these steps to use it:
 
 1. Install SQLite3 if not already installed.
-2. Open `bucket_manager_with_sqlite.py` and review the code.
+2. Open `bucket_sqlite.py` and review the code.
 3. Run the script:
     ```bash
-    python bucket_manager_with_sqlite.py
+    python bucket_sqlite.py
     ```
 
 ```python
