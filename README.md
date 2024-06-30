@@ -22,9 +22,9 @@ BucketManager is a Python project that simulates basic functionalities of AWS S3
 
 ## Installation
 
-Clone the repository:
+Clone the repository using ssh:
 ```bash
-git clone https://github.com/your-username/BucketManager.git
+git@github.com:My-Backend-Projects/aws-s3-clone-python.git
 cd BucketManager
 ```
 
