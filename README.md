@@ -2,9 +2,9 @@ Sure! Here's a detailed README for your GitHub project:
 
 ---
 
-# AWS S3 Bucket Clone with Simple Python Server
+# AWS S3 Bucket Clone (Python)
 
-This project implements a simple AWS S3 bucket clone using Python. It allows users to create buckets, add objects to these buckets, and retrieve information about the buckets through a simple HTTP server.
+This project implements a simple AWS S3 bucket clone using Python. It allows users to create buckets, add objects to these buckets, and retrieve information about the buckets.
 
 ## Features
 
@@ -22,13 +22,6 @@ This project implements a simple AWS S3 bucket clone using Python. It allows use
 
 This project is licensed under the MIT License.
 
-## Contributing
-
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/fooBar`).
-3. Commit your changes (`git commit -am 'Add some fooBar'`).
-4. Push to the branch (`git push origin feature/fooBar`).
-5. Create a new Pull Request.
 
 ## Contact
 
