@@ -1,99 +1,60 @@
-bucket = []
+class BucketManager:
+    def __init__(self):
+        self.bucket = []
 
-def bucket_capacity() -> str:
-    """
-    bucket_capacity method is for checking the length of the overall buckets
-    created in the system.
+    def bucket_capacity(self) -> str:
+        if len(self.bucket) == 0:
+            return "Bucket is empty"
+        else:
+            return f"Bucket has {len(self.bucket)} object(s)"
 
-    Args:
-        Empty
+    def max_bucket_capacity(self) -> bool:
+        if len(self.bucket) >= 4:
+            print("You have reached the max Bucket Capacity")
+            return False
+        else:
+            return True
 
-    Return:
-        String
-    """
-    if len(bucket) == 0:  # check if bucket length is empty
-        return "Bucket is empty"
-    else:
-        return f"Bucket has {len(bucket)} object(s)"
+    def create_bucket(self, bucket_name: str, region: str) -> str:
+        empty_obj = {
+            'name': bucket_name,
+            'region': region,
+            'objects': []
+        }
 
-def max_bucket_capacity() -> bool:
-    """
-    max_bucket_capacity method is for checking if a user has reached the max level
-    of buckets they are allowed to create.
+        if self.max_bucket_capacity():
+            self.bucket.append(empty_obj)
+            return "New Bucket created"
+        else:
+            return "No new Bucket created"
 
-    Args:
-        Empty
+    def delete_bucket(self, index: int) -> str:
+        if 0 <= index < len(self.bucket):
+            self.bucket.pop(index)
+            return f"Bucket at index {index} deleted"
+        else:
+            return "Index invalid"
 
-    Return:
-        Boolean: True | False
-    """
-    if len(bucket) >= 4:
-        print("You have reached the max Bucket Capacity")
-        return False
-    else:
-        return True
-
-def create_bucket(bucket_name: str, region: str) -> str:
-    empty_obj = {
-        'name': bucket_name,
-        'region': region,
-        'objects': []
-    }
-    
-    if max_bucket_capacity():
-        bucket.append(empty_obj)
-        return "New Bucket created"
-    else:
-        return "No new Bucket created"
-
-def delete_bucket(index: int) -> str:
-    """
-    delete_bucket method gives user the chance to delete a bucket by index.
-
-    Args:
-        index (int): Index of the bucket to delete.
-
-    Return:
-        str: Result of the deletion.
-    """
-    if 0 <= index < len(bucket):
-        bucket.pop(index)
-        return f"Bucket at index {index} deleted"
-    else:
-        return "Index invalid"
-
-def create_object(bucket_index: int, object_key: str, object_value: str) -> str:
-    """
-    create_object method adds an object to a specified bucket.
-
-    Args:
-        bucket_index (int): Index of the bucket where the object should be created.
-        object_key (str): Key of the object.
-        object_value (str): Value of the object.
-
-    Return:
-        str: Result of the object creation.
-    """
-    if 0 <= bucket_index < len(bucket):
-        bucket[bucket_index]['objects'].append({object_key: object_value})
-        return f"Object '{object_key}' created in bucket at index {bucket_index}"
-    else:
-        return "Bucket index invalid"
+    def create_object(self, bucket_index: int, object_key: str, object_value: str) -> str:
+        if 0 <= bucket_index < len(self.bucket):
+            self.bucket[bucket_index]['objects'].append({object_key: object_value})
+            return f"Object '{object_key}' created in bucket at index {bucket_index}"
+        else:
+            return "Bucket index invalid"
 
 # Example usage
-print(bucket)
-print(create_bucket("bucket1", "us-west-1"))
-print(bucket_capacity())
-print(create_bucket("bucket2", "us-west-2"))
-print(create_bucket("bucket3", "us-east-1"))
-print(create_bucket("bucket4", "us-east-2"))
-print(create_bucket("bucket5", "eu-west-1"))  # This should fail due to max capacity
-print(bucket_capacity())
-print(delete_bucket(1))
-print(bucket_capacity())
-print(create_object(0, "file1.txt", "Hello World"))
-print(create_object(0, "file2.txt", "Another File"))
-print(bucket)
-
-
+bucket_manager = BucketManager()
+print(bucket_manager.bucket)
+print(bucket_manager.create_bucket("bucket1", "us-west-1"))
+print(bucket_manager.bucket_capacity())
+print(bucket_manager.create_bucket("bucket2", "us-west-2"))
+print(bucket_manager.create_bucket("bucket3", "us-east-1"))
+print(bucket_manager.create_bucket("bucket4", "us-east-2"))
+print(bucket_manager.create_bucket("bucket5", "eu-west-1"))  # This should fail due to max capacity
+print(bucket_manager.bucket_capacity())
+print(bucket_manager.delete_bucket(1))
+print(bucket_manager.bucket_capacity())
+print(bucket_manager.create_object(0, "file1.txt", "Hello World"))
+print(bucket_manager.create_object(0, "file2.txt", "Another File"))
+print(bucket_manager.bucket)
 
